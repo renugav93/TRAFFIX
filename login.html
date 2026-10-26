@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login | Traffix</title><link rel="stylesheet" href="assets/style.css"></head>
+<body><header class="topbar"><a class="brand" href="index.html">TRAFFIX</a><span>Smart Traffic Management System</span></header>
+<main class="auth-wrap"><section class="auth-card"><p class="eyebrow">WELCOME BACK</p><h1>Sign in to Traffix</h1><p class="muted">Choose the role linked to your account.</p>
+<div id="feedback" class="notice" hidden></div>
+<form action="login" method="post">
+<label>Email address<input type="email" name="email" required autocomplete="username" placeholder="you@example.com"></label>
+<label>Password<input type="password" name="password" required autocomplete="current-password" placeholder="Enter password"></label>
+<label>Login as<select name="role" required><option value="">Select your role</option><option value="Citizen">Citizen</option><option value="Officer">Traffic Officer</option></select></label>
+<button class="primary full" type="submit">Login securely →</button></form>
+<p class="muted small">Demo: officer@traffix.com / demo123 · citizen@traffix.com / demo123</p><a href="index.html">← Back to home</a></section></main>
+<script>
+const p = new URLSearchParams(location.search);
+const box = document.getElementById('feedback');
+if (p.get('error') === 'invalid') { box.hidden=false; box.textContent='Invalid email, password or selected role. Please try again.'; }
+if (p.get('error') === 'missing') { box.hidden=false; box.textContent='Please complete every field.'; }
+if (p.get('message') === 'logout') { box.hidden=false; box.textContent='You have been logged out.'; }
+</script></body></html>
